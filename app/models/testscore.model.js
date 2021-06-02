@@ -25,7 +25,7 @@ TestScore.insert = (newTestScore, result) => {
   };
   
   TestScore.getHighest = result => {
-    sql.query("select RollNo, (first_round + second_round + third_round) as highest_score from test_score WHERE (first_round + second_round + third_round)=(select max((first_round + second_round + third_round))from test_score ) ;", (err, res) => {
+    sql.query(" select candidate.name , test_score.RollNo ,  (test_score.first_round + test_score.second_round + test_score.third_round) as highest_score from candidate INNER JOIN TEST_SCORE ON CANDIDATE.RollNo = Test_Score.RollNo where (first_round + second_round + third_round)=(select max(first_round + second_round + third_round) from test_score) ;", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);

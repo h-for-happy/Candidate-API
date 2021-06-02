@@ -21,7 +21,7 @@ exports.create = (req, res) => {
   
 
 
-  // Save Customer in the database
+  // Save Candidate in the database
   Candidate.create(candidate, (err, data) => {
     if (err)
       res.status(500).send({
@@ -32,7 +32,7 @@ exports.create = (req, res) => {
   });
 };
 
-// Retrieve all Customers from the database.
+// Retrieve all Candidates from the database.
 exports.findAll = (req, res) => {
     Candidate.getAll((err, data) => {
         if (err)
